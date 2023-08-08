@@ -6,9 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from 'src/auth/auth.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

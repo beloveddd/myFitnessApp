@@ -1,11 +1,19 @@
+import { Injectable } from '@angular/core';
+import { User } from './../auth/shared/services/auth/auth.service';
 import { BehaviorSubject, Observable, distinctUntilChanged, pluck } from 'rxjs';
 
 export interface State {
+  user: User,
   [key: string]: any
 }
 
-const state: State = {};
+const state: State = {
+  user: undefined!,
+}
 
+@Injectable({
+  providedIn: 'root'
+})
 export class Store {
 
   private subject = new BehaviorSubject<State>(state);
