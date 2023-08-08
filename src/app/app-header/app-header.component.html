@@ -1,0 +1,10 @@
+<div class="app-header">
+    <div class="wrapper">
+        <h1>MY FITNESS APP</h1>
+        <div 
+            class="app-header__user-info"
+            *ngIf="user?.authenticated">
+            <span (click)="logoutUser()">Logout</span>
+        </div>
+    </div>
+</div>
