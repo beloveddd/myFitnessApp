@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from 'src/auth/auth.module';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { AppNavComponent } from './app-nav/app-nav.component';
+import { HealthModule } from 'src/health/health.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AppNavComponent } from './app-nav/app-nav.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthModule
+    AuthModule,
+    HealthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
