@@ -1,0 +1,33 @@
+<div class="list-item">
+    <a [routerLink]="getRoute(item)">
+
+        <p class="list-item__name">{{ item.name }}</p>
+        <p class="list-item__ingredients">{{ item.ingredients }}</p>
+
+    </a>
+
+    <div class="list-item__delete" *ngIf="toggled">
+        <p>Delete item?</p>
+        <button
+            type="button"
+            class="confirm"
+            (click)="removeItem()">
+            Yes
+        </button>
+
+        <button
+            type="button"
+            class="confirm"
+            (click)="toggle()">
+            No
+        </button>
+    </div>
+
+    <button
+        class="trash"
+        type="button"
+        (click)="toggle()">
+        Remove
+    </button>
+
+</div>

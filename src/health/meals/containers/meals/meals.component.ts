@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from "@angular/core";
 import { Observable, Subscription } from "rxjs";
 import { Store } from "src/app/store";
 
@@ -14,7 +14,11 @@ export class MealsComponent implements OnInit, OnDestroy {
     meals$!: Observable<Meal[]>;
     subscription$!: Subscription;
 
-    constructor(private mealsService: MealsService, private store: Store) {}
+    constructor(
+        private mealsService: MealsService, 
+        private store: Store,
+        private cd: ChangeDetectorRef
+        ) {}
 
     ngOnInit(): void {
         this.meals$ = this.store.select<Meal[]>('meals');
@@ -23,5 +27,11 @@ export class MealsComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.subscription$.unsubscribe();
+    }
+
+    removeMeal(event: Meal) {
+        this.mealsService.removeMeal(event.key as string);
+        this.cd.markForCheck()
+        this.meals$.subscribe((meals) => console.log(meals))
     }
 }
