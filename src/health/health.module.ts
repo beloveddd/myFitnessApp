@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { IsAuthGuard } from 'src/auth/shared/guards/auth.guard';
+import { SharedModule } from './shared/shared.module';
 
 const ROUTES: Routes = [
     { path: 'schedule', canActivate: [IsAuthGuard], loadChildren: () => import('./schedule/schedule.module').then(x => x.ScheduleModule) },
@@ -10,7 +12,8 @@ const ROUTES: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forChild(ROUTES)
+    RouterModule.forChild(ROUTES),
+    SharedModule.forRoot()
   ],
 })
 export class HealthModule { }

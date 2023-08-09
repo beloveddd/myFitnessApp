@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
-import { tap } from "rxjs";
+import { Observable, tap } from "rxjs";
 
 import { Store } from "src/app/store";
 
@@ -38,6 +38,10 @@ export class AuthService {
 
     get authState() {
         return this.afAuth.authState;
+    }
+
+    get user() {
+        return this.store.select('user') as unknown as Observable<User>;
     }
 
     createUser(email: string, password: string) {
