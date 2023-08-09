@@ -1,1 +1,22 @@
-<div> {{ meals$ | async | json }}</div>
+<div class="meals"> 
+    <div class="meals__title">
+        <h1>YOUR MEALS</h1>
+        <a 
+        class="btn__add"
+        [routerLink]="['../meals/new']">Add new meal</a>
+    </div>
+    
+    <div *ngIf="meals$ | async as meals; else loading;">
+        <div class="message" *ngIf="!meals.length">
+            No meals, add new meal to start
+        </div>
+
+        
+    </div>
+
+    <ng-template #loading>
+        <div class="message">
+            Fetching meals...
+        </div>
+    </ng-template>
+</div>
