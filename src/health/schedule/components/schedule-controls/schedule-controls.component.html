@@ -1,1 +1,13 @@
-<div class="controls"></div>
+<div class="controls">
+    <button 
+        type="button"
+        (click)="moveDate(offset - 1)">
+        <
+    </button>
+    <p>{{ selected | date: 'mediumDate'}}</p>
+    <button 
+        type="button"
+        (click)="moveDate(offset +1)">
+        >
+    </button>
+</div>

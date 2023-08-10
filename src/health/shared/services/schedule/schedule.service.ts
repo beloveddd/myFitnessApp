@@ -27,4 +27,8 @@ export class ScheduleService {
         private store: Store,
         private db: AngularFireDatabase,
     ) {}
+
+    updateDate(date: Date) {
+        this.date$.next(date);
+    }
 }
