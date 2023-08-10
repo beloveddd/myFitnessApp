@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from "@angular/fire/compat/database";
-import { Observable, first, map, switchMap, tap } from "rxjs";
+import { Observable, filter, first, map, of, switchMap, tap } from "rxjs";
 
 import { Store } from "src/app/store";
 import { AuthService } from 'src/auth/shared/services/auth/auth.service';
@@ -41,7 +41,23 @@ export class MealsService {
         return this.db.list(`meals/${this.uid}`).push(meal);
     }
 
+    updateMeal(key: string, meal: Meal) {
+        return this.db.object(`meals/${this.uid}/${key}`).update(meal);
+
+    }
+
     removeMeal(key: string) {
         return this.db.list(`meals/${this.uid}`).remove(key);
+    }
+
+    getMeal(key: string) {
+        if (!key) {
+            return of({});
+        }
+
+        return this.store.select<Meal[]>('meals').pipe(
+            filter(Boolean),
+            map((meals) => meals.find((meal: Meal) => meal.key === key))
+        );
     }
 }
