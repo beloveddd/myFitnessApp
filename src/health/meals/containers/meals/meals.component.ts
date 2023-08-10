@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Observable, Subscription } from "rxjs";
 import { Store } from "src/app/store";
 
@@ -17,8 +17,7 @@ export class MealsComponent implements OnInit, OnDestroy {
     constructor(
         private mealsService: MealsService, 
         private store: Store,
-        private cd: ChangeDetectorRef
-        ) {}
+    ) {}
 
     ngOnInit(): void {
         this.meals$ = this.store.select<Meal[]>('meals');
