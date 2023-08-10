@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from "@angular/core";
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
-import { Meal } from "src/health/shared/services/meals/meals.service";
 import { Workout } from "src/health/shared/services/workouts/workouts.service";
 
 @Component({
@@ -29,48 +28,36 @@ export class WorkoutFormComponent implements OnChanges{
 
     form: FormGroup<any> = this.fb.group({
         name: ['', Validators.required],
+        type: 'strength',
+        strength: this.fb.group({
+            reps: 0,
+            sets: 0,
+            weight: 0,
+        }),
+        endurance: this.fb.group({
+            distance: 0,
+            duration: 0,
+        }),
     });
-
-    // get ingredients() {
-    //     return this.form.get('ingredients') as FormArray;
-    // }
 
     get required() {
         return this.form.get('name')?.hasError('required') && this.form.get('name')?.touched;
     }
 
+    get placeholder() {
+        return `e.g. ${ this.form.get('type')?.value === 'strength' ? 'Benchpress' : 'Treadmill'}`;
+    }
+
     constructor(private fb: FormBuilder) {}
 
     ngOnChanges(): void {
-        // if (this.meal && (this.meal as Meal).name) {
-        //     const value = this.meal;
+        if (this.workout && (this.workout as Workout).name) {
+            const value = this.workout;
 
-        //     this.form.patchValue(value);
-        //     this.exists = true;
-
-        //     this.emptyIngredients();
-
-        //     if ((value as Meal).ingredients) {
-        //         for (const item of (value as Meal).ingredients) {
-        //             this.ingredients.push(new FormControl(item));
-        //         }
-        //     }
-        // }
+            this.form.patchValue(value);
+            this.exists = true;
+        }
     }
-
-    // emptyIngredients() {
-    //     while(this.ingredients.controls.length) {
-    //         this.ingredients.removeAt(0);
-    //     }
-    // }
-
-    // addIngredient() {
-    //     this.ingredients.push(new FormControl(''));
-    // }
-
-    // removeIngredient(index: number) {
-    //     this.ingredients.removeAt(index);
-    // }
 
     createWorkout() {
         if (this.form.valid) {

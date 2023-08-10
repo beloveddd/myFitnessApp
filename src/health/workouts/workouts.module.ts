@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { WorkoutComponent } from './containers/workout/workout.component';
 import { WorkoutsComponent } from './containers/workouts/workouts.component';
 import { WorkoutFormComponent } from './containers/workouts/components/workout-form/workout-form.component';
+import { WorkoutTypeComponent } from './containers/workouts/components/workout-type/workout-type.component';
 
 const ROUTES: Routes = [
     { path: '', component: WorkoutsComponent},
@@ -18,7 +19,8 @@ const ROUTES: Routes = [
   declarations: [ 
     WorkoutsComponent, 
     WorkoutComponent, 
-    WorkoutFormComponent
+    WorkoutFormComponent,
+    WorkoutTypeComponent
   ],
   imports: [
     CommonModule,

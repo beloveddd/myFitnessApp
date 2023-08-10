@@ -19,7 +19,9 @@ export class ListItemComponent {
     constructor() {}
 
     getRoute(item: any) {
-        return [`../meals`, item.key];
+        return [
+            `${ item.ingredients ? "../meals" : "../workouts" }`, item.key
+        ];
     }
 
     toggle():void {
