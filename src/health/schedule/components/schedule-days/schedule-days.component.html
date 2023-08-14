@@ -1,3 +1,11 @@
 <div class="days">
-    
+    <button
+        *ngFor="let day of days; index as i;"
+        (click)="selectDay(i)"
+        type="button"
+        class="day">
+        <span [class.active] = "i === selected">
+            {{ day }}
+        </span>
+    </button>
 </div>

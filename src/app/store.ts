@@ -4,12 +4,14 @@ import { BehaviorSubject, Observable, distinctUntilChanged, pluck } from 'rxjs';
 import { User } from './../auth/shared/services/auth/auth.service';
 import { Meal } from 'src/health/shared/services/meals/meals.service';
 import { Workout } from 'src/health/shared/services/workouts/workouts.service';
+import { ScheduleItem } from 'src/health/shared/services/schedule/schedule.service';
 
 export interface State {
   user: User,
   meals: Meal[],
   workouts: Workout[],
   date: Date,
+  schedule: ScheduleItem[],
   [key: string]: any
 }
 
@@ -18,6 +20,7 @@ const state: State = {
   meals: undefined!,
   workouts: undefined!,
   date: undefined!,
+  schedule: undefined!,
 }
 
 @Injectable({
