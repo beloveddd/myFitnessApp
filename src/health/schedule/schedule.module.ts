@@ -10,6 +10,7 @@ import { ScheduleControlsComponent } from './components/schedule-controls/schedu
 import { ScheduleSectionComponent } from './components/schedule-section/schedule-section.component';
 import { JoinPipe } from '../shared/pipes/join.pipe';
 import { SharedModule } from '../shared/shared.module';
+import { ScheduleAssignComponent } from './components/schedule-assign/schedule-assign.component';
 
 const ROUTES: Routes = [
     { path: '', component: ScheduleComponent }
@@ -22,6 +23,7 @@ const ROUTES: Routes = [
     ScheduleDaysComponent,
     ScheduleControlsComponent,
     ScheduleSectionComponent,
+    ScheduleAssignComponent,
   ],
   imports: [
     CommonModule,

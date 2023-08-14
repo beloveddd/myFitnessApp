@@ -76,6 +76,11 @@ export class ScheduleService {
         tap((next: any) => this.store.set('schedule', next))
     );
 
+    list$ = this.section$.pipe(
+        map((value: any) => this.store.value[value.type]),
+        tap((next: any) => this.store.set('list', next))
+    )
+
     get uid() {
         return this.authService.user.pipe(
             map((user) => user.uid)

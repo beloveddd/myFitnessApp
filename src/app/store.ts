@@ -13,6 +13,7 @@ export interface State {
   date: Date,
   schedule: ScheduleItem[],
   selected: any,
+  list: any,
   [key: string]: any
 }
 
@@ -23,6 +24,7 @@ const state: State = {
   date: undefined!,
   schedule: undefined!,
   selected: undefined!,
+  list: undefined!,
 }
 
 @Injectable({
